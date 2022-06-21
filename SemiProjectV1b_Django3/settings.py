@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
-    'mamber.apps.MemberConfig',
+    'member.apps.MemberConfig',
     'board.apps.BoardConfig',
 ]
 
