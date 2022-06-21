@@ -1,58 +1,38 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Python 웹프로젝트 v1</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/webproject.css">
-    <style>
-        /* 페이지네이션 가운데 정렬*/
-        #pgnav { text-align: center; margin-left: -100px; }
+{% extends 'layout/base.html' %}
 
-        /* 페이지네이션의 페이지항목의 간격 재조정 */
-        #pgnav li { margin-left: 10px }
+{% block title %}board/list{% endblock %}
 
-        /*페이지네이션의 현재 페이지에 대한 스타일 지정*/
-        .cpage { font-weight: bold; font-size: 30px;
-                color: red }
+{% block style %}
+    /* 페이지네이션 가운데 정렬*/
+    #pgnav { text-align: center; margin-left: -100px; }
 
-        /* 게시판 목록 테이블 가운데 정렬*/
-        table { width: 70%; margin: 65px auto -10px;
-            /*border: 1px solid black;*/
-            border-collapse: collapse;
-            table-layout: fixed}
-        th, td { border:1px solid black;
-        padding: 10px; text-align: center}
+    /* 페이지네이션의 페이지항목의 간격 재조정 */
+    #pgnav li { margin-left: 10px }
 
-        td:nth-child(2) { white-space: nowrap;
-            overflow: hidden; text-overflow: ellipsis }
+    /*페이지네이션의 현재 페이지에 대한 스타일 지정*/
+    .cpage { font-weight: bold; font-size: 30px;
+            color: red }
 
-        td:nth-child(2) a:hover {color: crimson}
-        td:nth-child(2) a:active {color: crimson}
+    /* 게시판 목록 테이블 가운데 정렬*/
+    table { width: 70%; margin: 65px auto -10px;
+        /*border: 1px solid black;*/
+        border-collapse: collapse;
+        table-layout: fixed}
+    th, td { border:1px solid black;
+    padding: 10px; text-align: center}
+
+    td:nth-child(2) { white-space: nowrap;
+        overflow: hidden; text-overflow: ellipsis }
+
+    td:nth-child(2) a:hover {color: crimson}
+    td:nth-child(2) a:active {color: crimson}
 
 
-        .btns { text-align: right; border-top: none;
-            border-left: none; border-right: none}
+    .btns { text-align: right; border-top: none;
+        border-left: none; border-right: none}
+{% endblock %}
 
-
-
-    </style>
-</head>
-<body>
-<div id="wrap">
-    <header>
-        <h1>Python 웹프로젝트 v1</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="login.html">회원가입</a></li>
-                <li><a href="join.html">로그인</a></li>
-                <li><a href="list.html">게시판</a></li>
-                <li><a href="myinfo.html">회원정보</a></li>
-            </ul>
-        </nav>
-        <hr>
-        <div id="main">
+{% block content %}
         <h2>게시판</h2>
             <table>
                 <colgroup> <!-- 테이블 컬럼너비 지정-->
@@ -64,10 +44,10 @@
                 </colgroup>
                 <tr><td colspan="5" class="btns">
                     <button type="button"
-                            onclick="location.href='write.html'"> 새글쓰기 </button>
+                            onclick="location.href='/write'"> 새글쓰기 </button>
                 </td></tr>
                 <tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회</th></tr>
-                <tr><td>1</td><td><a href="view.html?bno=1">시간은 금이라구, 친구! 진짜라구, 친구! 정말이라구 친구!</a></td><td>작성자</td><td>작성일</td><td>조회</td></tr>
+                <tr><td>1</td><td><a href="/view">시간은 금이라구, 친구! 진짜라구, 친구! 정말이라구 친구!</a></td><td>작성자</td><td>작성일</td><td>조회</td></tr>
                 <tr><td>2</td><td>시간은 금이라구, 친구! 진짜라구, 친구! 정말이라구 친구!</td><td>skdl1256</td><td>2022-05-27</td><td>777</td></tr>
                 <tr><td>3</td><td>시간은 금이라구, 친구! 진짜라구, 친구! 정말이라구 친구!</td><td>skdl1256</td><td>2022-05-27</td><td>777</td></tr>
                 <tr><td>4</td><td>시간은 금이라구, 친구! 진짜라구, 친구! 정말이라구 친구!</td><td>skdl1256</td><td>2022-05-27</td><td>777</td></tr>
@@ -89,13 +69,6 @@
                 <li>다음</li>
             </ul>
             </form>
-        </div>
-    </header>
-    <footer>
-        <hr>
-        <span>copyright &copy; 2022. skdl1256. All Rights Reserved.</span>
-    </footer>
-</div>
+{% endblock %}
 
-</body>
-</html>
+{% block jscript %}{% endblock %}

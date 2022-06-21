@@ -1,43 +1,25 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Python 웹프로젝트 v1</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/webproject.css">
-    <style>
+{% extends 'layout/base.html' %}
 
-        /* 로그인 폼 배치하기 */
-        form { /*border: 1px solid red;*/ width :400px;
-            margin: 100px auto}
-        form div { margin-top: 10px }
-        form label { display: inline-block; width: 120px;
-                text-align: right; font-weight: bold }
+{% block title %}member/login{% endblock %}
 
-        /* 회원가입 폼 버튼 위치 설정 */
-        form button:first-child { margin-left: 130px }
+{% block style %}
+/* 로그인 폼 배치하기 */
+form { /*border: 1px solid red;*/ width :400px;
+    margin: 100px auto}
+form div { margin-top: 10px }
+form label { display: inline-block; width: 120px;
+        text-align: right; font-weight: bold }
 
-        #userid:hover, #userid:hover { background: aliceblue }
-        #passwd:focus, #passwd:focus { background: lemonchiffon }
-    </style>
-</head>
-<body>
-<div id="wrap">
-    <header>
-        <h1>Python 웹프로젝트 v1</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="login.html">회원가입</a></li>
-                <li><a href="join.html">로그인</a></li>
-                <li><a href="board.html">게시판</a></li>
-                <li><a href="myinfo.html">회원정보</a></li>
-            </ul>
-        </nav>
-        <hr>
+/* 회원가입 폼 버튼 위치 설정 */
+form button:first-child { margin-left: 130px }
 
+#userid:hover, #userid:hover { background: aliceblue }
+#passwd:focus, #passwd:focus { background: lemonchiffon }
+{% endblock %}
+
+{% block content %}
         <h2>로그인</h2>
-        <form name="loginfrm" method="post" action="login.do">
+        <form name="loginfrm" method="post">
         <div><label for="userid" >아이디</label>
             <input type="text" name="userid" id="userid">
         </div>
@@ -50,15 +32,5 @@
         <button type="submit">로그인</button>
         </div>
         </form>
-    </header>
-    <div id="main"></div>
-    <footer>
-
-        <hr>
-        <span>copyright &copy; 2022. skdl1256. All Rights Reserved.</span>
-    </footer>
-</div>
-
-
-</body>
-</html>
+{% endblock %}
+{% block jscript %}{% endblock %}
