@@ -1,0 +1,21 @@
+/* 메인 영역 크기 지정 */
+#main { height:auto; min-height: 500px }
+
+a { font-weight: bold }
+a:link { color: black; text-decoration: none } /* 평상시 링크 스타일 */
+a:visited { color: black; text-decoration: none } /* 링크를 클릭한 후 스타일 */
+a:hover { color: orange; text-decoration: underline } /* 링크에 마우스포인터를 올렸을때 스타일 */
+a:active { color: orange; text-decoration: underline}
+
+#wrap { /*border: 1px solid red;*/ width: 1250px;
+margin:0 auto}
+
+footer span { display: block; text-align: center }
+
+/* 구분선 */
+hr { background: black; height: 1px; }
+
+
+ul { list-style: none; padding:0 }
+ul li { display: inline-block;
+    margin-left: 155px }
