@@ -1,3 +1,6 @@
+{% extends 'layout/base.html' %}
+
+
 {# Django template language #}
 {# Django 템플릿에 사용할 수 있는 특수한 언어 #}
 {# => 템플릿 변수, 템플릿 태그, 템플릿 필터, 템플릿 코멘트 #}
@@ -5,8 +8,8 @@
 {# 템플릿 태그 : {% 태그명 또는 코드명 %} #}
 {# 템플릿 필터 : 변수의 값을 특정한 형식으로 변경 {{ 변수명 | 필터명 }} #}
 {# 템플릿 코멘트 : {% comment %} 여러줄 주석 {% endcomment %} #}
+{% comment %} 템플릿 코멘트 : {# 한줄 주석 #} {% endcomment %}
 
-{% extends 'layout/base.html' %}
 
 {% block title %}member/join{% endblock %}
 
@@ -28,6 +31,13 @@ form button:first-child { margin-left: 130px }
 {% endblock %}
 
 {% block content %}
+
+{# 만약, 로그인되어있다면, #}
+{#  회원가입 페이지는 더이상 보이면 안됨 #}
+{% if request.session.userid %}
+    <script>location.href='/';</script>
+{% endif %}
+
 <h2>회원가입</h2>
 <form id="joinfrm" name="joinfrm" method="post" >
     {# Django built-in template filter #}
@@ -59,40 +69,42 @@ form button:first-child { margin-left: 130px }
 </form>
 {% endblock %}
 {% block jscript %}
-{#<script>#}
-{#    const joinfrm = document.querySelector('#joinfrm');#}
-{#    joinfrm.addEventListener('submit', (e) => {#}
-{#        let userid = document.joinfrm.userid;#}
-{#        let passwd = document.joinfrm.passwd;#}
-{#        let repasswd = document.joinfrm.repasswd;#}
-{#        let name = document.joinfrm.name;#}
-{#        let email = document.joinfrm.email;#}
-{##}
-{#        if (userid.value == '') { // 아이디에 입력한 값이 공백이면#}
-{#            alert('아이디를 입력하세요!');#}
-{#            userid.focus();#}
-{#            e.preventDefault();#}
-{#        } else if (passwd.value == '') {#}
-{#            alert('비밀번호를 입력하세요!');#}
-{#            userid.focus();#}
-{#            e.preventDefault();#}
-{#        } else if (repasswd.value == '') {#}
-{#            alert('비밀번호 입력하세요!');#}
-{#            userid.focus();#}
-{#            e.preventDefault();#}
-{#        } else if (name.value == '') {#}
-{#            alert('이름를 입력하세요!');#}
-{#            userid.focus();#}
-{#            e.preventDefault();#}
-{#        } else if (email.value == '') {#}
-{#            alert('이메일를 입력하세요!');#}
-{#            userid.focus();#}
-{#            e.preventDefault();#}
-{#        } else if (passwd.value != repasswd.value) {#}
-{#            alert('비밀번호가 서로 일치하지 않습니다!!');#}
-{#            passwd.focus()#}
-{#            e.preventDefault();#}
-{#        }#}
-{#    });#}
-{#</script>#}
+{% comment %}
+<script>
+    const joinfrm = document.querySelector('#joinfrm');
+    joinfrm.addEventListener('submit', (e) => {
+        let userid = document.joinfrm.userid;
+        let passwd = document.joinfrm.passwd;
+        let repasswd = document.joinfrm.repasswd;
+        let name = document.joinfrm.name;
+        let email = document.joinfrm.email;
+
+        if (userid.value == '') { // 아이디에 입력한 값이 공백이면
+            alert('아이디를 입력하세요!');
+            userid.focus();
+            e.preventDefault();
+        } else if (passwd.value == '') {
+            alert('비밀번호를 입력하세요!');
+            userid.focus();
+            e.preventDefault();
+        } else if (repasswd.value == '') {
+            alert('비밀번호 입력하세요!');
+            userid.focus();
+            e.preventDefault();
+        } else if (name.value == '') {
+            alert('이름를 입력하세요!');
+            userid.focus();
+            e.preventDefault();
+        } else if (email.value == '') {
+            alert('이메일를 입력하세요!');
+            userid.focus();
+            e.preventDefault();
+        } else if (passwd.value != repasswd.value) {
+            alert('비밀번호가 서로 일치하지 않습니다!!');
+            passwd.focus()
+            e.preventDefault();
+        }
+    });
+</script>
+{% endcomment %}
 {% endblock %}

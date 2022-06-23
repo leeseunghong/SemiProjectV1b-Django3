@@ -15,15 +15,21 @@ th { text-align: right }
 {% endblock %}
 
 {% block content %}
-        <h2>회원정보</h2>
-            <form name="joinfrm" method="post">
-            <table>
-                <tr><td>아이디</td> <td>skdl1256</td></tr>
-                <tr><td>이름</td> <td>이승홍</td></tr>
-                <tr><td>이메일</td> <td>skdl1256@naver.com</td></tr>
-                <tr><td>가입일</td> <td>2022-05-27 11:36:30</td></tr>
-            </table>
-            </form>
+{# 만약, 로그인되어있다면, #}
+{#  회원가입 페이지는 보여지면 안됨 #}
+{% if not request.session.userid %}
+    <script>
+        alert('회원전용페이지입니다!');
+        location.href='/login';
+    </script>
+{% endif %}
+    <h2>회원정보</h2>
+    <table>
+        <tr><td>아이디</td> <td>{{ member.userid }}</td></tr>
+        <tr><td>이름</td> <td>{{ member.name }}</td></tr>
+        <tr><td>이메일</td> <td>{{ member.email }}</td></tr>
+        <tr><td>가입일</td> <td>{{ member.regdate }}</td></tr>
+    </table>
 {% endblock %}
 
 {% block jscript %}{% endblock %}
