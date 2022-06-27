@@ -75,7 +75,6 @@ def login(request):
                 id = Member.objects.all().filter(userid=form['userid'])\
                     .values_list('id')[0][0]
                 request.session['userid_id'] = id
-                print(id)
 
                 return redirect('/')  # index 페이지로 이동
             else:
